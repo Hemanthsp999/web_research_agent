@@ -62,7 +62,7 @@ def text_extract(url_list_str: str) -> str:
     # Parse the JSON string to get a list
     try:
         # Try to parse as JSON first
-        url_list = json.loads(url_list_str)
+        url_list = json.loads(url_list_str)[:5]  # Only process top 5 results
         if not isinstance(url_list, list):
             url_list = [url_list_str]  # If not a list, make it a list with one item
     except json.JSONDecodeError:
@@ -252,7 +252,7 @@ class Research_Agent:
             memory=self.memory,
             verbose=True,
             handle_parsing_errors=True,
-            max_iterations=5
+            max_iterations=2000
         )
 
     def run(self, query):

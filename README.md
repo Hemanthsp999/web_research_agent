@@ -50,6 +50,22 @@ Designed for users who want quick, summarized, and trustworthy insights from the
     10. End
     The session is stored in the research history for future reference or export.
 
+## How you designed the prompts/instructions for the AI ?
+
+    The prompts were designed using the ReAct (Reasoning + Acting) framework, which allows the AI model to:
+
+    Think through the problem step-by-step
+
+    Call predefined tools (i.e URL extractors, text scrapers)
+
+    Receive observations
+
+    Refine its approach iteratively
+
+    Conclude with a well-structured final answer
+
+    This approach enables the model to operate like a chain-of-thought researcher while delegating specific actions to external tools.
+
 ## How Agent handles problems ?
 
     - If a website is unreachable:
