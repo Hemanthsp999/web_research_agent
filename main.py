@@ -2,8 +2,6 @@ import os
 import streamlit as st
 from agent import Research_Agent  # Import your agent class
 
-os.environ["PATH"] = ".env"
-st.secrets["PATH"]
 
 # Title of the page
 st.set_page_config(page_title="Web Research Agent")
