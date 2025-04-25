@@ -7,7 +7,7 @@ Designed for users who want quick, summarized, and trustworthy insights from the
 
 # How Agent works ?
 
-![Agent Flowchart](flowchart.png)
+![Agent Work flow](flowchart.png)
 
 # How to setup ?
 
