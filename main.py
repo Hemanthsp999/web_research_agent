@@ -1,6 +1,11 @@
+import os
 import streamlit as st
 from agent import Research_Agent  # Import your agent class
 
+os.environ["PATH"] = ".env"
+st.secrets["PATH"]
+
+# Title of the page
 st.set_page_config(page_title="Web Research Agent")
 st.title("🔎 Web Research Agent")
 
@@ -28,7 +33,8 @@ with st.sidebar:
         st.session_state.messages = []
         st.session_state.research_history[new_session_id] = []
         # Keep the same agent to maintain memory across sessions
-        st.experimental_rerun()
+        # st.experimental_rerun()
+        st.rerun()
 
     # Display past research sessions
     st.subheader("Past Sessions")
@@ -45,7 +51,8 @@ with st.sidebar:
         if st.button(f"{title}", key=f"session_{session_id}"):
             st.session_state.current_session_id = session_id
             st.session_state.messages = st.session_state.research_history[session_id].copy()
-            st.experimental_rerun()
+            # st.experimental_rerun()
+            st.rerun()
 
 # Main area for current research session
 # Ensure current session exists in research_history
