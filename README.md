@@ -108,13 +108,21 @@ git clone <project_repo_link.git>
 cd "project_repo_name"
 ```
 
-3. Install the Dependencies.
+3. Create and Activate Environment
+
+```bash
+python3 -m venv env
+
+source env/bin/activate
+```
+
+4. Install the Dependencies.
 
 ```bash
 pip install -r requirements.txt
 ```
 
-4. Run the project.
+5. Run the project.
 
 ```bash
 python main.py
