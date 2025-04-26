@@ -19,16 +19,16 @@ my_api = os.getenv("SERPER_API_KEY")
 
 # Initialize LLM
 llm = ChatGoogleGenerativeAI(
-    model="gemini-2.0-flash-lite",
+    model="gemini-2.0-flash-001",
     temperature=0.5,
     max_tokens=None,
     timeout=None,
-    max_retries=2,
+    max_retries=2,  # if api call fails, then it try up to 2 times before throwing errors
 )
 
 
 # returns list of urls from the search engines
-def url_extract(query: str) -> str:
+def web_search(query: str) -> str:
     """
     Extracts relevant URLs based on a search query.
     Args:
@@ -51,7 +51,7 @@ def url_extract(query: str) -> str:
 
 
 # returns the content from the list of urls
-def text_extract(url_list_str: str) -> str:
+def web_scraper(url_list_str: str) -> str:
     """
     Extracts text from given URL links.
     Args:
@@ -183,16 +183,16 @@ class Research_Agent:
         # Initialize memory
         self.memory = ConversationBufferMemory(memory_key="research_history", return_messages=True)
 
-        # Create tools with safer input handling
+        # Create tools
         tools = [
             Tool.from_function(
-                func=url_extract,
-                name="URL_Extractor",
+                func=web_search,
+                name="Web_Search",
                 description="Extracts relevant URLs based on a search query. Input should be a search query string."
             ),
             Tool.from_function(
-                func=text_extract,
-                name="Text_Extractor",
+                func=web_scraper,
+                name="Web_Scraper",
                 description="Extracts text content from URLs. Input should be a JSON string containing a list of URLs or a single URL string."
             ),
             Tool.from_function(
@@ -269,6 +269,7 @@ class Research_Agent:
         except Exception as e:
             return f"Error running research agent: {str(e)}"
 
+    # return previous chat
     def get_memory(self):
         """Return the conversation memory"""
         return self.memory.load_memory_variables({})["research_history"]
