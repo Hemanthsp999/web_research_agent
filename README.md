@@ -1,8 +1,15 @@
-# Web Research Agent Assignment
+# Web Research Agent
 
 A Streamlit-based intelligent research assistant that leverages LangChain, Google Search, and LLMs to gather, extract, and analyze web content.
 The agent performs a multi-step process: extracting URLs, scraping content, analyzing relevance and reliability, and optionally fetching the latest news.
 Designed for users who want quick, summarized, and trustworthy insights from the web in a chat-like interface.
+
+# Tech Stack:
+
+1. Langchain (Agent)
+2. Streamlit (UI)
+3. Serper API
+4. Gemini-2.0-flash(LLM Model)
 
 # How Agent works ?
 
