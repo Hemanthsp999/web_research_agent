@@ -23,7 +23,7 @@ llm = ChatGoogleGenerativeAI(
     temperature=0.5,
     max_tokens=None,
     timeout=None,
-    max_retries=2,  # if api call fails, then it try up to 2 times before throwing errors
+    max_retries=5,  # if api call fails, then it try up to 2 times before throwing errors
 )
 
 
